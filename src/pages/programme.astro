@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { proposals } from '../data/site';
+---
+<Layout title="Programme politique" description="L’espace consacré aux prises de position et aux propositions politiques de Samuel Oliveira Condesso. Programme en préparation.">
+  <PageIntro number="02 /" label="IDÉES & ENGAGEMENT" title="Les idées méritent" emphasis="d’être développées." description="Un espace consacré à mes prises de position et à mes propositions. Pour donner aux idées le temps, la précision et la place qu’elles méritent." />
+  <section class="container programme-section">
+    {proposals.length ? <div class="proposal-list">{proposals.map(proposal => <details class="proposal"><summary><span class="eyebrow">{proposal.theme}</span><h2>{proposal.title}</h2><Icon name="plus" /></summary><p class="lead">{proposal.summary}</p><p class="prose-text">{proposal.content}</p></details>)}</div> : <div class="programme-state"><div class="programme-symbol" aria-hidden="true"><Icon name="compass" size={100} /><span>LES IDÉES PRENNENT FORME</span></div><div><span class="status-pill"><span></span> Programme en préparation</span><h2>Construire une pensée.<br /><em>Formuler des propositions.</em></h2><p>Le programme n’est pas encore publié. Cet espace accueillera des propositions détaillées, accompagnées de leurs objectifs, de leurs sources et de leurs modalités de mise en œuvre.</p><a class="text-link underlined" href="/contact/">Une question à partager ? <Icon name="external" size={18} /></a></div></div>}
+  </section>
+  <section class="soft-section"><div class="container"><p class="eyebrow">POUR ALLER PLUS LOIN</p><div class="section-heading"><h2>Le parcours nourrit<br /><em>la réflexion.</em></h2><a class="button button-outline" href="/parcours/">Faire connaissance <Icon name="external" size={18} /></a></div><p class="section-summary">Retrouvez les expériences de formation, de vie associative et de transmission qui composent mon parcours.</p></div></section>
+</Layout>

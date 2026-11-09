@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { person } from '../data/site';
+---
+<Layout title="Informations & confidentialité">
+  <PageIntro number="—" label="À PROPOS DU SITE" title="Informations" emphasis="& confidentialité." description="Quelques repères sur ce site personnel et le respect de votre vie privée." />
+  <div class="container legal-content"><section><h2>Un site personnel</h2><p>Ce site présente le parcours et les contenus de {person.name}. Pour toute question relative au contenu, vous pouvez écrire à <a href={`mailto:${person.email}`}>{person.email}</a>.</p><p>Les rubriques en préparation sont signalées comme telles. Aucun programme ou choix de lecture n’est présenté comme publié avant sa mise en ligne.</p></section><section><h2>Vos données</h2><p>Ce site n’utilise pas de cookies publicitaires, de mesure d’audience ni de formulaires de collecte. Les polices sont hébergées avec le site. Aucun lecteur musical ou contenu tiers n’est chargé automatiquement.</p><p>Si vous envoyez un courriel, votre message passe par votre service de messagerie et celui du destinataire. Il n’est pas enregistré par le site.</p><p>L’hébergeur peut conserver des journaux techniques nécessaires au fonctionnement et à la sécurité du service.</p></section><section><h2>Liens et ressources</h2><p>Les liens externes, lorsqu’ils sont présents, mènent à des sites dont les règles de confidentialité peuvent être différentes. Les références et commentaires restent sous la responsabilité de leurs auteurs respectifs.</p></section></div>
+</Layout>

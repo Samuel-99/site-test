@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { timeline } from '../data/site';
+---
+<Layout title="Mon parcours">
+  <PageIntro number="01 /" label="FAIRE CONNAISSANCE" title="Un parcours." emphasis="Plusieurs horizons." description="L’électronique, la musique et la vie associative. Des expériences différentes, reliées par la curiosité et le goût de faire ensemble." />
+  <section class="container biography-split">
+    <div class="bio-portrait"><img src="/images/samuel-portrait.webp" width="728" height="688" alt="Samuel Oliveira Condesso" /><span>Samuel Oliveira Condesso</span></div>
+    <div class="biography-text"><p class="eyebrow">DE VUADENS À MUNICH</p><h2>Apprendre.<br /><em>Et transmettre.</em></h2><p>Mon parcours scolaire m’a mené de Vuadens à Bulle, puis vers l’informatique et l’électronique. Le bilinguisme français–allemand et une année d’échange à Munich font aussi partie de cette histoire.</p><p>J’ai donné des cours d’appui, travaillé dans l’accueil et la vente, et participé à des projets associatifs. Des expériences qui demandent d’écouter, de s’adapter et de travailler en équipe.</p><p>En dehors de la technique, je pratique le baryton et la guitare. La course, le ski, le jardinage, l’impression 3D et la découpe laser figurent aussi parmi mes centres d’intérêt.</p></div>
+  </section>
+  <section class="container timeline-section" aria-labelledby="timeline-title"><div class="section-heading"><div><p class="eyebrow">QUELQUES REPÈRES</p><h2 id="timeline-title">Le fil du <em>parcours.</em></h2></div><p>Des étapes de formation,<br /> de transmission et d’engagement.</p></div><ol class="timeline">{timeline.map(item => <li><span class="timeline-date">{item.date}</span><div class="timeline-content"><span class="eyebrow">{item.place}</span><h3>{item.title}</h3><p>{item.text}</p></div></li>)}</ol><p class="source-note">Repères biographiques issus du CV fourni. Les dates indiquent les étapes du parcours et ne présument pas des fonctions exercées aujourd’hui.</p></section>
+  <section id="engagements" class="soft-section"><div class="container"><p class="eyebrow">LE SENS DU COLLECTIF</p><h2>Des projets qui <em>rassemblent.</em></h2><div class="feature-grid"><article class="feature-panel"><span class="feature-number">01</span><h3>L’Automate solidaire</h3><p>Une association cofondée en 2023. Mon implication a porté sur sa présidence au démarrage et sur le développement électronique, avec des compétences en programmation, Linux et Raspberry Pi.</p></article><article class="feature-panel"><span class="feature-number">02</span><h3>La Fanfare de Vuadens</h3><p>La pratique du baryton et un engagement au comité mentionné dès 2016. Une expérience de la musique comme pratique collective, dans la vie locale.</p><a class="text-link" href="/musiques/">Le côté musical <Icon name="external" size={18} /></a></article></div></div></section>
+</Layout>

@@ -1,0 +1,63 @@
+---
+import '@fontsource-variable/dm-sans';
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import '../styles/global.css';
+import { navigation, person } from '../data/site';
+import Icon from '../components/Icon.astro';
+interface Props { title: string; description?: string; }
+const { title, description = 'Le site personnel de Samuel Oliveira Condesso. Un parcours entre électronique, vie associative et musique, à Vuadens et au-delà.' } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#173f35" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_CH" />
+    <meta property="og:title" content={`${title} — ${person.name}`} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} — {person.name}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <div class="header-inner container">
+        <a href="/" class="brand">
+          <span class="monogram" aria-hidden="true">so<span>.</span></span>
+          <span class="brand-name">Samuel Oliveira <span>Condesso</span></span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+        <nav id="navigation" aria-label="Navigation principale">
+          {navigation.map(item => <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>{item.label}</a>)}
+          <a class="nav-contact" href="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>Échangeons <Icon name="external" size={16} /></a>
+        </nav>
+      </div>
+    </header>
+    <main id="contenu"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <a href="/" class="footer-brand">Samuel Oliveira<br /><em>Condesso.</em></a>
+        <p>Un parcours, des idées.<br />Et l’envie de les partager.</p>
+        <a class="footer-contact" href="/contact/">Poursuivons la conversation <Icon name="external" size={22} /></a>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} {person.name}</span><span>Site personnel · {person.location}</span><a href="/informations/">Informations & confidentialité</a></div>
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector<HTMLElement>('#navigation');
+      function closeMenu() { toggle?.setAttribute('aria-expanded', 'false'); nav?.classList.remove('is-open'); }
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open)); nav?.classList.toggle('is-open', open);
+      });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') { closeMenu(); toggle.focus(); } });
+      document.addEventListener('click', (event) => { if (event.target instanceof Node && !nav?.contains(event.target) && !toggle?.contains(event.target)) closeMenu(); });
+      matchMedia('(min-width: 1101px)').addEventListener('change', closeMenu);
+    </script>
+  </body>
+</html>

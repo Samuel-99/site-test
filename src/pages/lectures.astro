@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { books } from '../data/site';
+---
+<Layout title="Mes lectures" description="La bibliothèque personnelle de Samuel Oliveira Condesso : un espace pour des livres choisis et des notes de lecture. Sélection à venir.">
+  <PageIntro number="03 /" label="LA BIBLIOTHÈQUE" title="Des livres." emphasis="Des perspectives." description="Une place pour les lectures qui laissent une trace, les idées que l’on garde et les questions que l’on emporte avec soi." />
+  <section class="container collection-section">
+    <div class="collection-bar"><span>NOTES DE LECTURE</span><span>{books.length ? `${books.length} livre${books.length > 1 ? 's' : ''}` : 'La sélection se prépare'}</span></div>
+    {books.length ? <div class="reading-grid">{books.map(book => <article class="reading-card"><span class="eyebrow">{book.category}</span><h2>{book.title}</h2><p class="book-author">{book.author}</p><p>{book.note}</p>{book.url && <a class="text-link" href={book.url} target="_blank" rel="noopener noreferrer">Découvrir le livre <Icon name="external" size={18} /></a>}</article>)}</div> : <div class="collection-empty"><div class="library-illustration" aria-hidden="true"><div class="shelf-books"><span></span><span></span><span></span><span></span><span></span></div><span class="shelf-line"></span></div><span class="status-pill">Sélection à venir</span><h2>Une bibliothèque<br /><em>à partager.</em></h2><p>Les premiers livres et mes notes personnelles trouveront bientôt leur place ici. Chaque référence sera accompagnée de quelques mots sur ce qu’elle m’a apporté.</p><a class="text-link underlined" href="/contact/">Un livre à me conseiller ? <Icon name="external" size={18} /></a></div>}
+  </section>
+</Layout>

@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { tracks } from '../data/site';
+---
+<Layout title="En musique" description="Le baryton, la Fanfare de Vuadens et la guitare : la musique dans le parcours de Samuel Oliveira Condesso.">
+  <PageIntro number="04 /" label="AU-DELÀ DES MOTS" title="Une autre façon" emphasis="de se raconter." description="La musique fait partie de mon parcours. Il y a celle que l’on joue ensemble, celle que l’on découvre et celle que l’on a envie de partager." />
+  <section class="container music-feature"><div class="music-art" aria-hidden="true"><span class="eyebrow">DU SOUFFLE AUX CORDES</span><div class="large-record"><span></span></div><span class="music-art-caption">La musique se partage.</span></div><div class="music-feature-copy"><p class="eyebrow">EN PRATIQUE</p><h2>Jouer sa part.<br /><em>Écouter l’ensemble.</em></h2><p>Le baryton à la Fanfare de Vuadens occupe une place dans mon parcours musical, avec un engagement dans la vie de son comité.</p><p>La guitare en est une autre facette. Deux instruments, deux manières d’aborder la musique, et le même plaisir de jouer.</p><div class="instrument-tags"><span>Baryton</span><span>Fanfare</span><span>Guitare</span></div></div></section>
+  <section class="container collection-section"><div class="collection-bar"><span>LE CARNET D’ÉCOUTE</span><span>{tracks.length ? `${tracks.length} morceaux` : 'Sélection à venir'}</span></div>{tracks.length ? <div class="track-list">{tracks.map((track, i) => <article class="track"><span class="track-number">{String(i + 1).padStart(2, '0')}</span><div><h3>{track.title}</h3><span>{track.artist}</span><p>{track.note}</p></div><a class="text-link" href={track.url} target="_blank" rel="noopener noreferrer" aria-label={`Écouter ${track.title} de ${track.artist} (nouvel onglet)`}>Écouter <Icon name="external" size={18} /></a></article>)}</div> : <div class="inline-empty"><Icon name="music" size={28} /><div><h3>Les premières écoutes arrivent.</h3><p>Une sélection personnelle de morceaux, avec quelques mots pour expliquer ce qui me touche dans chacun.</p></div><a class="text-link" href="/contact/">Suggérer une découverte <Icon name="external" size={18} /></a></div>}</section>
+</Layout>
