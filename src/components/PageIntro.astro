@@ -1,0 +1,9 @@
+---
+interface Props { number: string; label: string; title: string; emphasis?: string; description: string; }
+const { number, label, title, emphasis, description } = Astro.props;
+---
+<section class="page-intro container">
+  <p class="eyebrow"><span class="section-number">{number}</span> {label}</p>
+  <h1>{title}{emphasis && <><br /><em>{emphasis}</em></>}</h1>
+  <p class="page-description">{description}</p>
+</section>

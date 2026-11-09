@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { articles } from '../data/site';
+---
+<Layout title="Études & articles" description="Un carnet de ressources et de lectures commentées : études, articles et pistes de réflexion sélectionnés par Samuel Oliveira Condesso.">
+  <PageIntro number="05 /" label="LE CARNET DE RÉFLEXION" title="Lire. Comprendre." emphasis="Mettre en perspective." description="Des études, des articles et des ressources commentées. Un espace pour approfondir un sujet, confronter les points de vue et poursuivre la réflexion." />
+  <section class="container collection-section"><div class="collection-bar"><span>ÉTUDES & ARTICLES</span><span>{articles.length ? `${articles.length} ressources` : 'Premières ressources à venir'}</span></div>{articles.length ? <div class="article-list">{articles.map(article => <article class="article-item"><p class="eyebrow">{article.category} · {article.source}</p><h2>{article.title}</h2><p>{article.note}</p><a class="text-link underlined" href={article.url} target="_blank" rel="noopener noreferrer">Lire la source <Icon name="external" size={18} /></a></article>)}</div> : <div class="collection-empty"><div class="editorial-illustration" aria-hidden="true"><span class="illustration-paper"><i></i><i></i><i></i><i></i><i></i></span><span class="illustration-circle"></span></div><span class="status-pill">Carnet en préparation</span><h2>De la matière<br /><em>pour la réflexion.</em></h2><p>Les premières ressources seront présentées ici avec leur source, leur contexte et un commentaire personnel pour en expliquer l’intérêt.</p><a class="text-link underlined" href="/contact/">Partager une ressource <Icon name="external" size={18} /></a></div>}</section>
+</Layout>

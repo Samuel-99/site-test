@@ -1,0 +1,17 @@
+---
+interface Props { name: 'arrow' | 'external' | 'book' | 'music' | 'article' | 'compass' | 'mail' | 'pin' | 'plus' | 'check'; size?: number; }
+const { name, size = 24 } = Astro.props;
+const paths = {
+  arrow: 'M4 12h15m-6-6 6 6-6 6',
+  external: 'M7 17 17 7M7 7h10v10',
+  book: 'M12 6c-3-3-7-3-10-2v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 2Zm0 0v15',
+  music: 'M9 18V5l11-2v13M9 9l11-2M9 18c0 1.7-1.6 3-3.5 3S2 20 2 18.5 3.6 16 5.5 16 9 16.5 9 18Zm11-2c0 1.7-1.6 3-3.5 3S13 18 13 16.5s1.6-2.5 3.5-2.5 3.5.5 3.5 2Z',
+  article: 'M14 2H5v20h14V7l-5-5Zm0 0v6h5M8 12h8M8 16h8',
+  compass: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm4-16-3 7-7 3 3-7 7-3Z',
+  mail: 'M3 5h18v14H3V5Zm0 1 9 7 9-7',
+  pin: 'M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0ZM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+  plus: 'M12 5v14M5 12h14',
+  check: 'm5 12 4 4L19 6',
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>

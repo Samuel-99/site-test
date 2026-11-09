@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { person } from '../data/site';
+---
+<Layout title="Échangeons">
+  <PageIntro number="06 /" label="PRENDRE CONTACT" title="Une conversation" emphasis="commence par un mot." description="Une question sur mon parcours, une idée à discuter, un livre ou un article à partager ? Vous pouvez m’écrire directement." />
+  <section class="container contact-section"><div class="contact-card"><div class="contact-icon"><Icon name="mail" size={35} /></div><p class="eyebrow">PAR COURRIEL</p><h2>Faisons <em>connaissance.</em></h2><a class="email-link" href={`mailto:${person.email}`}>{person.email}<Icon name="external" size={24} /></a><div class="contact-actions"><a class="button button-dark" href={`mailto:${person.email}`}>M’écrire un message <Icon name="external" size={18} /></a><button type="button" class="copy-email text-link" data-email={person.email}>Copier l’adresse</button></div><p class="copy-status" role="status" aria-live="polite"></p><p class="contact-footnote">Le lien ouvre votre application de messagerie. Aucun message n’est collecté par ce site.</p></div><aside class="contact-aside"><Icon name="pin" size={27} /><p class="eyebrow">ANCRAGE LOCAL</p><h3>Vuadens.<br /><em>Et au-delà.</em></h3><p>Un parcours en Gruyère, une formation à Fribourg, une année à Munich. Le dialogue n’a pas besoin de frontières.</p><span class="location-dot"></span><span class="aside-location">Canton de Fribourg · Suisse</span></aside></section>
+  <script>
+    const copy = document.querySelector<HTMLButtonElement>('.copy-email');
+    const status = document.querySelector<HTMLElement>('.copy-status');
+    copy?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(copy.dataset.email ?? '');
+        if (status) status.textContent = 'Adresse copiée. Vous pouvez la coller dans votre messagerie.';
+      } catch {
+        if (status) status.textContent = 'La copie automatique n’est pas disponible. Sélectionnez l’adresse affichée pour la copier.';
+      }
+    });
+  </script>
+</Layout>

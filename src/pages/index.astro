@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { person } from '../data/site';
+const explorations = [
+  { number: '01', title: 'Le programme', category: 'IDÉES & ENGAGEMENT', text: 'Un espace pour mes prises de position et mes propositions.', href: '/programme/', icon: 'compass', art: 'compass-art', status: 'En préparation' },
+  { number: '02', title: 'Mes lectures', category: 'LA BIBLIOTHÈQUE', text: 'Des livres, des découvertes et les idées qu’ils font naître.', href: '/lectures/', icon: 'book', art: 'book-art', status: 'Sélection à venir' },
+  { number: '03', title: 'En musique', category: 'AU-DELÀ DES MOTS', text: 'Du baryton à la guitare, une autre part de mon univers.', href: '/musiques/', icon: 'music', art: 'record-art', status: 'Découvrir' },
+  { number: '04', title: 'Matière à penser', category: 'ÉTUDES & ARTICLES', text: 'Des ressources pour prendre du recul et ouvrir la discussion.', href: '/regards/', icon: 'article', art: 'paper-art', status: 'Sélection à venir' },
+] as const;
+---
+<Layout title="Accueil">
+  <section class="hero container">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="little-line"></span> SAMUEL OLIVEIRA CONDESSO</p>
+      <h1>Comprendre.<br />Créer.<br /><em>S’engager.</em></h1>
+      <p class="hero-intro">{person.introduction}</p>
+      <div class="hero-actions"><a class="button button-dark" href="/parcours/">Découvrir mon parcours <Icon name="external" size={19} /></a><a class="text-link" href="#explorer">Explorer mes idées <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-location"><span class="location-dot"></span>{person.location}<span class="location-divider">/</span>Un regard ouvert sur le monde</div>
+    </div>
+    <div class="hero-visual">
+      <div class="portrait-frame">
+        <div class="portrait-topline"><span>LE GOÛT DU COLLECTIF</span><span>VUADENS · SUISSE</span></div>
+        <div class="portrait-photo"><img src="/images/samuel-portrait.webp" width="728" height="688" alt="Portrait de Samuel Oliveira Condesso, souriant, avec des lunettes et un t-shirt noir" fetchpriority="high" /></div>
+        <div class="portrait-caption"><span>Samuel.</span><span>Curieux de nature.<br />Engagé par envie.</span></div>
+        <span class="portrait-corner" aria-hidden="true">+</span>
+      </div>
+      <div class="portrait-note"><span class="note-line"></span><span>La technique pour construire.<br />Le collectif pour avancer.</span></div>
+    </div>
+  </section>
+
+  <div class="intro-ribbon"><div class="container ribbon-inner"><span>ANCRÉ ICI. OUVERT AUX AUTRES.</span><span>Électronique <i>·</i> Vie associative <i>·</i> Musique</span><span class="ribbon-cross" aria-hidden="true">✳</span></div></div>
+
+  <section class="about-section container" aria-labelledby="about-title">
+    <div class="section-label"><span class="section-number">01 /</span><span>FAIRE CONNAISSANCE</span></div>
+    <div class="about-body">
+      <h2 id="about-title">Derrière les idées,<br /><em>un parcours humain.</em></h2>
+      <div class="about-columns"><p>Je m’appelle Samuel. Mon parcours passe par Vuadens, les études d’électronique à Fribourg et une année d’échange à Munich. Des expériences qui relient mon intérêt pour la technique au plaisir d’apprendre avec les autres.</p><p>La vie associative y tient une place particulière : la Fanfare de Vuadens, mais aussi la cofondation de L’Automate solidaire en 2023. Ce site réunit ces différentes facettes et ouvre un espace pour partager mes idées.</p></div>
+      <a class="text-link underlined" href="/parcours/">Le fil de mon parcours <Icon name="external" size={18} /></a>
+    </div>
+  </section>
+
+  <section id="explorer" class="explore-section" aria-labelledby="explore-title">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow"><span class="section-number">02 /</span> MON UNIVERS</p><h2 id="explore-title">Des idées aux <em>découvertes.</em></h2></div><p>Ce qui m’anime, ce qui m’inspire.<br /> Quelques portes d’entrée pour me connaître.</p></div>
+      <div class="explore-grid">
+        {explorations.map(item => <a class="explore-card" href={item.href}>
+          <div class={`card-art ${item.art}`} aria-hidden="true"><span class="art-index">{item.number}</span>{item.art === 'book-art' ? <div class="book-stack"><span></span><span></span><span></span></div> : item.art === 'record-art' ? <div class="record"><span></span></div> : item.art === 'paper-art' ? <div class="paper-stack"><span></span><span></span><span></span></div> : <div class="compass-drawing"><span></span><span></span><Icon name="compass" size={110} /></div>}<span class="art-arrow"><Icon name="external" size={22} /></span></div>
+          <div class="card-content"><p class="eyebrow">{item.category}</p><h3>{item.title}</h3><p>{item.text}</p><span class="card-status">{item.status}<Icon name="arrow" size={17} /></span></div>
+        </a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="engagement-section container" aria-labelledby="engagement-title">
+    <div class="engagement-art" aria-hidden="true"><span class="art-label">ENSEMBLE, CONSTRUIRE.</span><div class="collective-shapes"><span></span><span></span><span></span><span></span></div><span class="art-bottom">Des liens. Des projets. Du concret.</span></div>
+    <div class="engagement-copy"><p class="eyebrow"><span class="section-number">03 /</span> SUR LE TERRAIN</p><h2 id="engagement-title">L’envie de faire,<br /><em>avec les autres.</em></h2><p>En 2023, j’ai cofondé L’Automate solidaire et contribué à son développement électronique. Un projet à la croisée de la technique et de l’engagement associatif.</p><p>La musique est un autre fil de ce parcours : jouer du baryton à la Fanfare de Vuadens, participer à son comité, trouver sa place dans un ensemble.</p><a class="text-link underlined" href="/parcours/#engagements">Découvrir ces engagements <Icon name="external" size={18} /></a></div>
+  </section>
+  <section class="conversation-band"><div class="container conversation-inner"><div><p class="eyebrow">LE DIALOGUE COMMENCE ICI</p><h2>Une idée, une question ?<br /><em>Parlons-en.</em></h2></div><a class="button button-light" href="/contact/">Échangeons <Icon name="external" size={20} /></a></div></section>
+</Layout>
