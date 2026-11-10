@@ -40,7 +40,21 @@ Voir [le guide éditorial](docs/CONTENU.md) pour ajouter une référence ou une 
 
 Le CV fourni est une source non datée : ses indications « depuis » ne prouvent pas une fonction actuelle ou un diplôme obtenu. Le PDF original, l’adresse privée, la date de naissance et le téléphone **ne sont pas inclus** dans les fichiers publics. Seul le portrait a été extrait. L’adresse de courriel du CV est utilisée pour le contact ; la vérifier avant toute mise en ligne.
 
-## Mise en ligne Infomaniak (manuelle)
+## Publication GitHub Pages avec le domaine Infomaniak
+
+Le domaine existant est `samuel-oliveira.ch`. Si Infomaniak gère le domaine et son DNS, le site peut continuer à être hébergé par GitHub Pages.
+
+1. Dans GitHub, ouvrir **Settings → Pages → Build and deployment → Source** et sélectionner **GitHub Actions**.
+2. Conserver `samuel-oliveira.ch` dans **Custom domain**, avec les DNS précédemment configurés. Ne pas remplacer une configuration DNS existante sans diagnostic.
+3. Fusionner la branche contenant `.github/workflows/deploy-pages.yml` dans `main`.
+4. Dans l’onglet **Actions**, attendre que « Construire et publier le site » réussisse, y compris le job `deploy`. Le workflow peut aussi être relancé manuellement avec **Run workflow** sur `main`.
+5. Vérifier le domaine en HTTPS et les pages directes (`/parcours/`, `/programme/`, `/contact/`).
+
+Le workflow installe les dépendances verrouillées, vérifie les sources, construit `dist/` et publie cet export. Une pull request exécute la vérification et la construction, sans publication. Aucun jeton personnel ou secret Infomaniak n’est nécessaire : le déploiement utilise les permissions GitHub Actions du dépôt.
+
+Fusionner les sources seules ne suffit pas : le précédent site était du HTML directement à la racine, tandis que le nouveau nécessite cette construction. Les réglages GitHub Pages et le succès réel du job doivent être vérifiés séparément.
+
+## Hébergement Web Infomaniak (alternative manuelle)
 
 1. Valider les contenus, le portrait, le courriel public et les textes d’information.
 2. Exécuter `npm ci --cache /tmp/site-test-npm-cache`, `npm run check`, puis `npm run build`.
@@ -50,7 +64,7 @@ Le CV fourni est une source non datée : ses indications « depuis » ne prouven
 
 Les chemins commencent par `/` : cette configuration vise un domaine ou sous-domaine dédié, pas un sous-répertoire. Le fichier `CNAME` existant, qui désigne `samuel-oliveira.ch`, est conservé à la racine et dans `public/` pour l’export. Aucun accès Infomaniak n’est configuré dans ce dépôt. Le fonctionnement local de l’export ne vérifie pas les réglages effectifs de l’hébergeur.
 
-Le site de test précédent (`index.html`, `script.js`, `styles.css` à la racine) est remplacé par les sources Astro. Le serveur de production doit servir **l’export `dist/`**, et non la racine des sources. Si le domaine utilise GitHub Pages, il faudra configurer la construction et la publication de cet export avant de fusionner ; cette branche ne déclenche aucun déploiement.
+Le site de test précédent (`index.html`, `script.js`, `styles.css` à la racine) est remplacé par les sources Astro. Le serveur de production doit servir **l’export `dist/`**, et non la racine des sources.
 
 Le site n’a ni formulaire serveur, ni mesure d’audience, ni lecteur tiers intégré. Le bouton « M’écrire » ouvre l’application de messagerie du visiteur. Les polices sont embarquées dans l’export. La copie du courriel nécessite un contexte sécurisé et propose une explication si le navigateur la refuse.
 
@@ -67,4 +81,4 @@ python tests/accessibility.py
 
 `SITE_URL` permet de choisir l’adresse du serveur de test. Le test fonctionnel parcourt toutes les pages à 1440, 390 et 320 pixels, contrôle les liens internes, le menu mobile, les erreurs JavaScript et la copie du courriel. L’audit axe-core vérifie les règles WCAG A/AA disponibles sur ordinateur et mobile ; il ne remplace pas un examen manuel.
 
-**Aucune commande de ce projet ne déploie ni ne publie le site.**
+Les commandes npm locales ne publient pas le site. Le workflow GitHub Actions publie l’export après un envoi sur `main` ou un lancement manuel, lorsque GitHub Pages est configuré pour utiliser GitHub Actions.
