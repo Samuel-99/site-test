@@ -1,0 +1,187 @@
+/* PAGE MUSIQUES — mise en page et adaptations aux écrans. */
+
+@layer components {
+  .music-feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9%;
+    padding-bottom: 80px;
+    align-items: center;
+  }
+  .music-art {
+    min-height: 390px;
+    padding: 27px;
+    background: #dce3d5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+  .music-art > .eyebrow {
+    font-size: 8px;
+  }
+  .large-record {
+    width: 240px;
+    height: 240px;
+    display: grid;
+    place-items: center;
+    background: repeating-radial-gradient(
+      circle,
+      #253d31 0px,
+      #253d31 2px,
+      #3b4e3d 3px,
+      #253d31 4px
+    );
+    border-radius: 50%;
+    margin: 20px auto;
+    box-shadow: 7px 10px 15px #173f3520;
+    position: relative;
+  }
+  .large-record::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+      transparent 10%,
+      #ffffff12 20%,
+      transparent 40%,
+      transparent 60%,
+      #ffffff18 75%,
+      transparent 90%
+    );
+  }
+  .large-record span {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: #bda06c;
+    display: grid;
+    place-items: center;
+  }
+  .large-record span::after {
+    content: '';
+    background: var(--sage);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .music-art-caption {
+    font: italic 25px var(--serif);
+  }
+  .music-feature-copy h2 {
+    margin-top: 22px;
+  }
+  .music-feature-copy > p:not(.eyebrow) {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 20px;
+  }
+  .instrument-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 25px;
+  }
+  .instrument-tags > span {
+    border: 1px solid #cdd4c2;
+    padding: 5px 12px;
+    font-size: 10px;
+  }
+  .inline-empty {
+    display: flex;
+    gap: 25px;
+    padding: 40px 0;
+    align-items: flex-start;
+  }
+  .inline-empty > svg {
+    flex: 0 0 auto;
+    margin-top: 3px;
+    color: #7d8e69;
+  }
+  .inline-empty h3 {
+    font-size: 29px;
+  }
+  .inline-empty p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+    max-width: 490px;
+  }
+  .inline-empty > a {
+    margin-left: auto;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .track {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .track-number {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .track h3 {
+    font-size: 30px;
+  }
+  .track > div > span {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .track p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  .track > a {
+    margin-left: auto;
+    flex: 0 0 auto;
+  }
+}
+
+/* AFFICHAGE MOBILE ET AUTRES ADAPTATIONS — mêmes éléments, selon l’écran. */
+@layer responsive {
+  @media (max-width: 1100px) {
+    .inline-empty {
+      flex-wrap: wrap;
+    }
+    .inline-empty > a {
+      margin-left: 53px;
+    }
+  }
+  @media (max-width: 760px) {
+    .music-feature {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding-bottom: 45px;
+    }
+    .music-art {
+      min-height: 330px;
+    }
+    .large-record {
+      width: 210px;
+      height: 210px;
+    }
+    .music-feature-copy > p:not(.eyebrow) {
+      font-size: 12px;
+    }
+    .inline-empty {
+      gap: 20px;
+      padding-top: 28px;
+    }
+    .inline-empty > div {
+      flex: 1;
+    }
+    .inline-empty h3 {
+      font-size: 26px;
+    }
+    .inline-empty > a {
+      margin-left: 48px;
+      font-size: 11px;
+    }
+  }
+}

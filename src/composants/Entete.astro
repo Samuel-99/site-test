@@ -1,0 +1,66 @@
+---
+import { navigation } from '../configuration/site';
+import Icone from './Icone.astro';
+const pathname = Astro.url.pathname;
+---
+
+<!-- EN-TÊTE COMMUN — identité, liens du menu et navigation mobile. -->
+<header class="site-header">
+  <div class="header-inner container">
+    <a href="/" class="brand">
+      <span class="monogram" aria-hidden="true">
+        so<span>.</span>
+      </span>
+      <span class="brand-name">
+        Samuel Oliveira <span>Condesso</span>
+      </span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">
+      <span>Menu</span>
+      <span class="menu-lines" aria-hidden="true"></span>
+    </button>
+    <nav id="navigation" aria-label="Navigation principale">
+      {navigation.map((item) => (
+        <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+      <a
+        class="nav-contact"
+        href="/contact/"
+        aria-current={pathname === '/contact/' ? 'page' : undefined}
+      >
+        Échangeons <Icone name="external" size={16} />
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#navigation');
+  function closeMenu() {
+    toggle?.setAttribute('aria-expanded', 'false');
+    nav?.classList.remove('is-open');
+  }
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    nav?.classList.toggle('is-open', open);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (
+      event.target instanceof Node &&
+      !nav?.contains(event.target) &&
+      !toggle?.contains(event.target)
+    )
+      closeMenu();
+  });
+  matchMedia('(min-width: 1101px)').addEventListener('change', closeMenu);
+</script>

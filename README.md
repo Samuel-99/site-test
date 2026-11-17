@@ -34,9 +34,13 @@ npm run preview
 - `/informations/` : informations et confidentialité.
 - `/404.html` : page d’erreur.
 
-Les faits biographiques, l’adresse de contact et les sélections sont centralisés dans **`src/data/site.ts`**. Les introductions et textes de présentation se trouvent dans `src/pages/`. Les styles et composants sont partagés ; le contenu est rendu au build, sans framework JavaScript côté visiteur.
+Les textes et listes modifiables se trouvent directement dans **`src/pages/`**, une page par fichier. Les informations partagées (nom, courriel, menu) sont dans **`src/configuration/site.ts`**. Les photos sont dans **`src/assets/images/`**, avec leurs références et conseils dans **`src/configuration/images.ts`**.
 
-Voir [le guide éditorial](docs/CONTENU.md) pour ajouter une référence ou une proposition. Les tableaux vides affichent une présentation « à venir », jamais de faux favoris ni de programme inventé.
+Pour modifier le site, commencer par **[GUIDE-MODIFICATIONS.md](GUIDE-MODIFICATIONS.md)** : correspondance pages/adresses/styles, remplacement d’image, dimensions, ajout de livre et aperçu local. [Le guide éditorial](docs/CONTENU.md) précise les champs des listes et les points à confirmer avant publication.
+
+Les styles sont tous rangés dans `src/styles/` : `theme.css` pour les couleurs et polices, `base.css` pour les règles générales, `commun.css` pour les éléments partagés et `pages/` pour les styles propres à chaque page. Chaque fichier inclut ses adaptations mobiles. Les composants sont dans `src/composants/` et le cadre HTML commun dans `src/modeles/Page.astro`.
+
+`npm run format` met les sources en forme automatiquement ; `npm run format:check` vérifie leur lisibilité sans les modifier.
 
 Le CV fourni est une source non datée : ses indications « depuis » ne prouvent pas une fonction actuelle ou un diplôme obtenu. Le PDF original, l’adresse privée, la date de naissance et le téléphone **ne sont pas inclus** dans les fichiers publics. Seul le portrait a été extrait. L’adresse de courriel du CV est utilisée pour le contact ; la vérifier avant toute mise en ligne.
 

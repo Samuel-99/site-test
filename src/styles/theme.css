@@ -1,0 +1,17 @@
+/* THÈME — couleurs et polices du site. */
+@layer reset, base, components, responsive;
+
+@layer base {
+  :root {
+    --paper: #f8f7f2;
+    --paper-deep: #f0eee6;
+    --ink: #213c32;
+    --green: #173f35;
+    --muted: #61695e;
+    --line: #dcded4;
+    --sage: #dce3d6;
+    --gold: #886332;
+    --serif: 'Newsreader Variable', Georgia, serif;
+    --sans: 'DM Sans Variable', Arial, sans-serif;
+  }
+}

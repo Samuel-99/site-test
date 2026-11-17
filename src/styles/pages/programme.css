@@ -1,0 +1,127 @@
+/* PAGE PROGRAMME — mise en page et adaptations aux écrans. */
+
+@layer components {
+  .section-summary {
+    max-width: 550px;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: -12px;
+  }
+  .programme-section {
+    padding-block: 5px 90px;
+  }
+  .programme-state {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    gap: 8%;
+    background: var(--paper-deep);
+    border: 1px solid #dce0d3;
+    padding: 60px;
+    align-items: center;
+  }
+  .programme-symbol {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    border-right: 1px solid #ccd4c1;
+    padding-right: 25px;
+  }
+  .programme-symbol svg {
+    stroke-width: 0.6;
+  }
+  .programme-symbol > span {
+    font-size: 7px;
+    letter-spacing: 0.17em;
+  }
+  .programme-state h2 {
+    font-size: 41px;
+    margin-top: 25px;
+  }
+  .programme-state p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 21px;
+  }
+  .programme-state a {
+    margin-top: 20px;
+  }
+  .proposal {
+    padding: 30px 0;
+    border-block: 1px solid var(--line);
+  }
+  .proposal summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+  .proposal summary::-webkit-details-marker {
+    display: none;
+  }
+  .proposal summary .eyebrow {
+    width: 100%;
+  }
+  .proposal summary h2 {
+    flex: 1;
+    font-size: 40px;
+  }
+  .proposal[open] summary > svg {
+    transform: rotate(45deg);
+  }
+  .proposal > p {
+    max-width: 750px;
+    margin-top: 25px;
+  }
+  .proposal .lead {
+    font-size: 18px;
+  }
+  .prose-text {
+    white-space: pre-line;
+    color: var(--muted);
+  }
+}
+
+/* AFFICHAGE MOBILE ET AUTRES ADAPTATIONS — mêmes éléments, selon l’écran. */
+@layer responsive {
+  @media (max-width: 1100px) {
+    .programme-state {
+      padding: 40px;
+    }
+    .programme-state h2 {
+      font-size: 36px;
+    }
+  }
+  @media (max-width: 760px) {
+    .section-summary {
+      margin-top: 0;
+      font-size: 12px;
+    }
+    .programme-section {
+      padding-bottom: 55px;
+    }
+    .programme-state {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 25px;
+    }
+    .programme-symbol {
+      min-height: 170px;
+      padding: 0 0 25px;
+      border-right: 0;
+      border-bottom: 1px solid #ccd4c1;
+      gap: 20px;
+    }
+    .programme-symbol svg {
+      width: 80px;
+      height: 80px;
+    }
+    .programme-state h2 {
+      font-size: 32px;
+    }
+  }
+}

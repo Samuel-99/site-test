@@ -1,0 +1,100 @@
+/* PAGE LECTURES — mise en page et adaptations aux écrans. */
+
+@layer components {
+  .library-illustration {
+    width: 230px;
+    height: 140px;
+    position: relative;
+    margin-bottom: 35px;
+  }
+  .shelf-books {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 130px;
+  }
+  .shelf-books > span {
+    height: 97px;
+    width: 27px;
+    border: 1px solid #7c8a6f;
+    background: #c3ccb4;
+    position: relative;
+  }
+  .shelf-books > span::before {
+    content: '';
+    position: absolute;
+    top: 9px;
+    bottom: 9px;
+    left: 5px;
+    right: 5px;
+    border-block: 1px solid #6f7f5f;
+  }
+  .shelf-books > span:nth-child(2) {
+    height: 120px;
+    background: #687d57;
+    width: 34px;
+  }
+  .shelf-books > span:nth-child(3) {
+    background: #e3d9bf;
+    height: 108px;
+  }
+  .shelf-books > span:nth-child(4) {
+    background: #2d5140;
+    height: 88px;
+  }
+  .shelf-books > span:nth-child(5) {
+    transform: rotate(-15deg);
+    transform-origin: bottom left;
+    margin-left: 16px;
+    height: 103px;
+    background: #c2ad85;
+  }
+  .shelf-line {
+    position: absolute;
+    top: 130px;
+    height: 1px;
+    left: 0;
+    right: 0;
+    background: #9aa78a;
+  }
+  .reading-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+  }
+  .reading-card {
+    border: 1px solid var(--line);
+    padding: 35px 25px;
+  }
+  .reading-card h2 {
+    font-size: 35px;
+    margin-top: 25px;
+  }
+  .reading-card p {
+    font-size: 13px;
+    margin-top: 20px;
+    color: var(--muted);
+  }
+  .reading-card .book-author {
+    font-size: 11px;
+    margin-top: 8px;
+  }
+  .reading-card > a {
+    margin-top: 25px;
+  }
+}
+
+/* AFFICHAGE MOBILE ET AUTRES ADAPTATIONS — mêmes éléments, selon l’écran. */
+@layer responsive {
+  @media (max-width: 760px) {
+    .library-illustration {
+      transform: scale(0.9);
+      margin-bottom: 20px;
+    }
+    .reading-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

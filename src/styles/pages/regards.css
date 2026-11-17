@@ -1,0 +1,66 @@
+/* PAGE REGARDS — mise en page et adaptations aux écrans. */
+
+@layer components {
+  .editorial-illustration {
+    position: relative;
+    width: 190px;
+    height: 150px;
+    margin-bottom: 30px;
+  }
+  .illustration-paper {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 105px;
+    height: 130px;
+    border: 1px solid #9aa88b;
+    background: #faf9f1;
+    top: 9px;
+    left: 18px;
+    padding: 20px 15px;
+    transform: rotate(-9deg);
+    box-shadow: 6px 6px 0 #d0d8c3;
+  }
+  .illustration-paper i {
+    display: block;
+    height: 1px;
+    background: #b7c2a8;
+    margin-bottom: 9px;
+  }
+  .illustration-paper i:first-child {
+    width: 70%;
+    height: 12px;
+    background: #6b8259;
+    margin-bottom: 18px;
+  }
+  .illustration-paper i:last-child {
+    width: 60%;
+  }
+  .illustration-circle {
+    display: block;
+    position: absolute;
+    right: 9px;
+    bottom: 0;
+    border: 1px solid #9da789;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background: #dbe1ce;
+  }
+  .article-item {
+    padding-block: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .article-item h2 {
+    font-size: 40px;
+    margin-top: 18px;
+  }
+  .article-item > p:not(.eyebrow) {
+    margin-top: 20px;
+    color: var(--muted);
+    max-width: 700px;
+  }
+  .article-item > a {
+    margin-top: 20px;
+  }
+}
