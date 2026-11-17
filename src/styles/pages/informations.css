@@ -1,0 +1,38 @@
+/* PAGE INFORMATIONS — mise en page et adaptations aux écrans. */
+
+@layer components {
+  .legal-content {
+    max-width: 800px;
+    padding-bottom: 80px;
+  }
+  .legal-content > section {
+    border-top: 1px solid var(--line);
+    padding-block: 35px;
+  }
+  .legal-content h2 {
+    font-size: 35px;
+    margin-bottom: 25px;
+  }
+  .legal-content p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+  .legal-content a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* AFFICHAGE MOBILE ET AUTRES ADAPTATIONS — mêmes éléments, selon l’écran. */
+@layer responsive {
+  @media (max-width: 760px) {
+    .legal-content {
+      padding-bottom: 40px;
+    }
+    .legal-content p {
+      font-size: 12px;
+    }
+  }
+}

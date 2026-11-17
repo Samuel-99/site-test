@@ -1,0 +1,30 @@
+---
+import { person } from '../configuration/site';
+import Icone from './Icone.astro';
+---
+
+<!-- PIED DE PAGE COMMUN — signature, contact et informations. -->
+<footer class="site-footer">
+  <div class="container footer-top">
+    <a href="/" class="footer-brand">
+      Samuel Oliveira
+      <br />
+      <em>Condesso.</em>
+    </a>
+    <p>
+      Un parcours, des idées.
+      <br />
+      Et l’envie de les partager.
+    </p>
+    <a class="footer-contact" href="/contact/">
+      Poursuivons la conversation <Icone name="external" size={22} />
+    </a>
+  </div>
+  <div class="container footer-bottom">
+    <span>
+      © {new Date().getFullYear()} {person.name}
+    </span>
+    <span>Site personnel · {person.location}</span>
+    <a href="/informations/">Informations & confidentialité</a>
+  </div>
+</footer>

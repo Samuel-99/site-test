@@ -1,0 +1,186 @@
+/* PAGE PARCOURS — mise en page et adaptations aux écrans. */
+
+@layer components {
+  .biography-split {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    gap: 10%;
+    padding-block: 10px 80px;
+    align-items: center;
+  }
+  .bio-portrait {
+    padding: 25px 25px 18px;
+    background: var(--sage);
+  }
+  .bio-portrait img {
+    width: 100%;
+    mix-blend-mode: multiply;
+  }
+  .bio-portrait > span {
+    display: block;
+    font: italic 23px var(--serif);
+    padding-top: 20px;
+  }
+  .biography-text h2 {
+    margin-top: 22px;
+    margin-bottom: 28px;
+  }
+  .biography-text > p:not(.eyebrow) {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 16px;
+    line-height: 1.95;
+  }
+  .timeline-section {
+    padding-block: 45px 90px;
+  }
+  .timeline {
+    padding: 0;
+    list-style: none;
+    margin-top: 55px;
+  }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 0.52fr 1fr;
+  }
+  .timeline-date {
+    font-size: 12px;
+    letter-spacing: 0.035em;
+    padding-top: 5px;
+    color: #64705c;
+  }
+  .timeline-content {
+    position: relative;
+    padding: 0 0 40px 39px;
+    border-left: 1px solid #cbd3bf;
+  }
+  .timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #788c61;
+    outline: 6px solid var(--paper);
+  }
+  .timeline-content .eyebrow {
+    font-size: 8px;
+    color: #64705c;
+  }
+  .timeline-content h3 {
+    font-size: 32px;
+    margin-top: 13px;
+  }
+  .timeline-content > p {
+    margin-top: 13px;
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 520px;
+  }
+  .source-note {
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 10px;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    margin-top: 40px;
+  }
+  .feature-panel {
+    border-top: 1px solid #bac5af;
+    padding-top: 20px;
+  }
+  .feature-number {
+    display: block;
+    font-size: 10px;
+    color: #64705c;
+    margin-bottom: 30px;
+  }
+  .feature-panel h3 {
+    font-size: 35px;
+  }
+  .feature-panel > p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 18px;
+    max-width: 470px;
+  }
+  .feature-panel > a {
+    margin-top: 20px;
+  }
+}
+
+/* AFFICHAGE MOBILE ET AUTRES ADAPTATIONS — mêmes éléments, selon l’écran. */
+@layer responsive {
+  @media (max-width: 760px) {
+    .biography-split {
+      grid-template-columns: 1fr;
+      gap: 35px;
+      padding-bottom: 45px;
+    }
+    .bio-portrait {
+      max-width: 440px;
+    }
+    .biography-text h2 {
+      margin-top: 18px;
+      margin-bottom: 22px;
+    }
+    .biography-text > p:not(.eyebrow) {
+      font-size: 12px;
+    }
+    .timeline-section {
+      padding-block: 30px 55px;
+    }
+    .timeline {
+      margin-top: 35px;
+    }
+    .timeline li {
+      grid-template-columns: 100px 1fr;
+    }
+    .timeline-date {
+      font-size: 9px;
+    }
+    .timeline-content {
+      padding-left: 23px;
+      padding-bottom: 33px;
+    }
+    .timeline-content .eyebrow {
+      font-size: 7px;
+    }
+    .timeline-content h3 {
+      font-size: 27px;
+    }
+    .timeline-content > p {
+      font-size: 11px;
+    }
+    .source-note {
+      font-size: 9px;
+    }
+    .feature-grid {
+      gap: 30px;
+      grid-template-columns: 1fr;
+      margin-top: 30px;
+    }
+    .feature-number {
+      margin-bottom: 20px;
+    }
+    .feature-panel h3 {
+      font-size: 30px;
+    }
+    .feature-panel > p {
+      font-size: 12px;
+    }
+  }
+  @media print {
+    .feature-panel,
+    .timeline li {
+      break-inside: avoid;
+    }
+  }
+}

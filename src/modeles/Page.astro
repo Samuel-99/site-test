@@ -1,0 +1,45 @@
+---
+import '@fontsource-variable/dm-sans';
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import '../styles/theme.css';
+import '../styles/base.css';
+import '../styles/commun.css';
+import { person } from '../configuration/site';
+import Entete from '../composants/Entete.astro';
+import PiedDePage from '../composants/PiedDePage.astro';
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Le site personnel de Samuel Oliveira Condesso. Un parcours entre électronique, vie associative et musique, à Vuadens et au-delà.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#173f35" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_CH" />
+    <meta property="og:title" content={`${title} — ${person.name}`} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} — {person.name}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">
+      Aller au contenu
+    </a>
+    <Entete />
+    <main id="contenu">
+      <slot />
+    </main>
+    <PiedDePage />
+  </body>
+</html>

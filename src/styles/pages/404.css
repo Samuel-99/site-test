@@ -1,0 +1,26 @@
+/* PAGE 404 — mise en page et adaptations aux écrans. */
+
+@layer components {
+  .not-found {
+    padding-block: 90px 120px;
+  }
+  .not-found h1 {
+    margin-top: 25px;
+  }
+  .not-found p:not(.eyebrow) {
+    margin-block: 30px;
+    color: var(--muted);
+  }
+}
+
+/* AFFICHAGE MOBILE ET AUTRES ADAPTATIONS — mêmes éléments, selon l’écran. */
+@layer responsive {
+  @media (max-width: 760px) {
+    .not-found {
+      padding-block: 55px 80px;
+    }
+    .not-found h1 {
+      font-size: 65px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+---
+import type { ImageDuSite } from '../configuration/images';
+interface Props {
+  image: ImageDuSite;
+  alt?: string;
+  prioritaire?: boolean;
+}
+const { image, alt = image.alt, prioritaire = false } = Astro.props;
+---
+
+<!-- Les dimensions viennent du fichier réel. Le cadrage est réglé dans configuration/images.ts. -->
+<img
+  src={image.fichier.src}
+  width={image.fichier.width}
+  height={image.fichier.height}
+  alt={alt}
+  data-cadrage={image.cadrage}
+  fetchpriority={prioritaire ? 'high' : undefined}
+/>
